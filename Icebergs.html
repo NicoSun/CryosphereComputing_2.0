@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Icebergs</title>
+<head>
+
+<link REL="SHORTCUT ICON" href="CC.ico" type="image/x-icon"> 
+<link rel="icon" href="CC.ico" type="image/x-icon">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3_content/w3.css">
+<link rel="stylesheet" href="w3_content/css.css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="w3_content/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+<style>
+body {font-family: "Lato", sans-serif}
+
+hr { 
+  display: block;
+  border-width: 2px;
+  border-color: #666666;
+} 
+
+body {
+  background-color: #000033;
+  color: #e6e6e6;
+}
+
+#chartdiv {
+  width: 1200px;
+  height: 1000px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  background-color: #ffffff;
+  height: 190px;
+}
+
+.column a {
+  float: none;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+</style>
+</head>
+
+<body>
+<!-- Navbar -->
+<!-- div class="w3-top"-->
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="SIT.html" class="w3-bar-item w3-button w3-padding-large">AMSR2 Ice Thickness</a>
+        <div class="w3-dropdown-hover w3-hide-small">
+      <a href="awp.html" class="w3-padding-large w3-button">Albedo-Warming Potential (AWP)<i class="fa fa-caret-down"></i></a>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+       <div class="row">
+        <div class="column">
+          <a href="awp-region.html" class="w3-bar-item w3-button">AWP regional</a>
+          <a href="awp-south.html" class="w3-bar-item w3-button">Antarctic</a>
+          <a href="NRTawp.html" class="w3-bar-item w3-button">Arctic NRT</a>
+          <a href="NRTawp-south.html" class="w3-bar-item w3-button">Antarctic NRT</a>
+        </div>
+        <div class="column">
+          <a href="melt-awp.html" class="w3-bar-item w3-button">Ice-Melt AWP</a>
+          <a href="NRT-icemelt.html" class="w3-bar-item w3-button">Ice-Melt NRT</a>
+        </div>
+
+        </div>
+        </div>
+        </div>
+        
+      <div class="w3-dropdown-hover w3-hide-small">
+      <a href="Snow-Cover.html" class="w3-padding-large w3-button">Snow <i class="fa fa-caret-down"></i></a>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="snow-regional.html" class="w3-bar-item w3-button">Snow-Regional</a>
+        </div>
+        </div>
+        
+      <div class="w3-dropdown-hover w3-hide-small">
+      <a href="IceSheets.html" class="w3-padding-large w3-button">Ice Sheets<i class="fa fa-caret-down"></i></a>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="Bedrock.html" class="w3-bar-item w3-button">Greenland Bedrock</a>
+        <a href="Bedrock-Antarctica.html" class="w3-bar-item w3-button">Antarctica Bedrock</a>
+        <a href="Glacier-size.html" class="w3-bar-item w3-button">Glacier Size</a>
+        </div>
+        </div>
+        
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button href="index.html" class="w3-padding-large w3-button" title="HOME">Analysis <i class="fa fa-caret-down"></i></button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="IceFreeDays.html" class="w3-bar-item w3-button">Ice Free Days</a>
+        <a href="PastSIC.html" class="w3-bar-item w3-button">Past Ice Maps</a>
+    </div>
+    </div>
+     <a href="doc.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Documentation</a>
+    <button class="w3-button w3-right" onclick="darkmode()"><i class="fa fa-moon-o"></i></button>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+    <a href="IceSheets.html" class="w3-padding-large w3-button">Ice Sheets<i></i></a>
+    <div class="w3-dropdown-hover">
+  <a href="awp.html" class="w3-padding-large w3-button">Albedo-Warming Potential (AWP)<i class="fa fa-caret-down"></i></a>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+     <a href="awp-region.html" class="w3-bar-item w3-button">AWP regional</a>
+          <a href="awp-south.html" class="w3-bar-item w3-button">Antarctic</a>
+          <a href="NRTawp.html" class="w3-bar-item w3-button">Arctic NRT</a>
+          <a href="NRTawp-south.html" class="w3-bar-item w3-button">Antarctic NRT</a>
+          <a href="melt-awp.html" class="w3-bar-item w3-button">Ice-Melt AWP</a>
+          <a href="NRT-icemelt.html" class="w3-bar-item w3-button">Ice-Melt NRT</a>
+        </div>
+        </div>
+        
+  <div class="w3-dropdown-hover">
+      <a href="Snow-Cover.html" class="w3-padding-large w3-button">Snow <i class="fa fa-caret-down"></i></a>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="snow-regional.html" class="w3-bar-item w3-button">Snow-Regional</a>
+        </div>
+        </div>
+        
+  <div class="w3-dropdown-hover">
+  <button href="index.html" class="w3-padding-large w3-button" title="HOME">Analysis <i class="fa fa-caret-down"></i></button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="IceFreeDays.html" class="w3-bar-item w3-button">Ice Free Days</a>
+        <a href="PastSIC.html" class="w3-bar-item w3-button">Past Ice Maps</a>
+</div>
+</div>
+<a href="doc.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Documentation</a>
+</div>
+
+
+
+  <!-- The Website Section -->
+  <div class="w3-container w3-content w3-center w3-padding-5" style="max-width:1200px">
+     <h2 class="w3-wide">Antarctic Icebergs</h2>
+    <p class="w3-opacity"><i>updated every Saturday</i></p>
+      <div id="chartdiv"></div>
+            <div>
+        <img src="Iceberg/icebergs_movement.png" class="w3-round" style="width:100%">
+      </div>
+  </div>
+    
+
+<div class="w3-center">
+<h2 class="w3-wide" >Data used</h2>
+<p> U.S. National Ice Center (NIC); https://www.natice.noaa.gov/pub/icebergs/Iceberg_Tabular.csv</p>
+</div>
+	
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+
+// Themes end
+
+// Create map instance
+var chart = am4core.create("chartdiv", am4maps.MapChart);
+
+// Set map definition
+chart.geodata = am4geodata_worldLow;
+
+// Set projection
+chart.projection = new am4maps.projections.Orthographic();
+chart.panBehavior = "rotateLongLat";
+chart.backgroundSeries.mapPolygons.template.polygon.fill = am4core.color("#33a7ff");
+chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 1;
+chart.background.fill = am4core.color("#000033");
+chart.background.fillOpacity = 1;
+chart.deltaLatitude = 90; 
+
+var grid = chart.series.push(new am4maps.GraticuleSeries());
+grid.toBack();
+
+// Create map polygon series
+var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+
+// Make map load polygon (like country names) data from GeoJSON
+polygonSeries.useGeodata = true;
+polygonSeries.mapPolygons.template.nonScalingStroke = true;
+polygonSeries.mapPolygons.template.strokeOpacity = 0.5;
+
+let imageSeries = chart.series.push(new am4maps.MapImageSeries());
+let imageSeriesTemplate = imageSeries.mapImages.template;
+
+let circle = imageSeriesTemplate.createChild(am4core.Circle);
+circle.radius = 5;
+circle.fill = am4core.color("#808080");
+circle.stroke = am4core.color("#330000");
+circle.strokeWidth = 2;
+circle.nonScaling = true;
+circle.tooltipText = "{Iceberg}";
+
+
+// let rect = imageSeriesTemplate.createChild(am4core.Rectangle);
+// rect.width = 20;
+// rect.height = 50;
+// rect.fill = am4core.color("black");
+
+imageSeriesTemplate.propertyFields.latitude = "Latitude";
+imageSeriesTemplate.propertyFields.longitude = "Longitude";
+
+imageSeries.dataSource.url = "https://CryosphereComputing.tk/Iceberg/icebergs.json";
+imageSeries.dataSource.parser = new am4core.JParser();
+imageSeries.dataSource.parser.options.emptyAs = 0;
+
+}); // end am4core.ready()
+</script>
+
+</body>
+</html>
