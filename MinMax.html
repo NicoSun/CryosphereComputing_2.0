@@ -3,16 +3,14 @@
 <title>Historic Sea Ice Concentration</title>
 <head>
 
-<link REL="SHORTCUT ICON" href="../static/favicon.ico" type="image/x-icon"> 
-<link rel="icon" href="../static/favicon.ico" type="image/x-icon">
-
+<link REL="SHORTCUT ICON" href="static/favicon.ico" type="image/x-icon"> 
+<link rel="icon" href="static/favicon.ico" type="image/x-icon">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../static/w3_content/w3.css">
-<link rel="stylesheet" href="../static/w3_content/css.css?family=Lato">
+<link rel="stylesheet" href="static/w3_content/w3.css">
+<link rel="stylesheet" href="static/w3_content/css.css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 <style>
 body {font-family: "Lato";
@@ -135,6 +133,8 @@ img {vertical-align: middle;}
         <a href="IceFreeDays.html" class="w3-bar-item w3-button">Ice Free Days</a>
         <a href="PastSIC.html" class="w3-bar-item w3-button">Past Ice Maps</a>
         <a href="MinMax.html" class="w3-bar-item w3-button">MinMax SIC</a>
+        <a href="MeltFreezeDays.html" class="w3-bar-item w3-button">Arctic Melt & FreezeDays</a>
+        <a href="MeltFreezeDays_south.html" class="w3-bar-item w3-button">Antarctic MeltFreezeDays</a>
     </div>
     </div>
      <a href="doc.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Documentation</a>
@@ -191,10 +191,10 @@ img {vertical-align: middle;}
 	</select>
 	</div>
 	<div class="w3-half">
-	<img id="Arctic_Min" src="MinMax/NSIDC_Min_0901_north.png">
+	<img id="Arctic_Min" src="Analysis/MinMax/NSIDC_Min_0901_north.png">
 	</div>
 	<div class="w3-half">
-	<img id="Arctic_Max" src="MinMax/NSIDC_Max_0901_north.png">
+	<img id="Arctic_Max" src="Analysis/MinMax/NSIDC_Max_0901_north.png">
 	</div>
 
 		
@@ -243,8 +243,8 @@ monthstring = String(parseInt(this.value));
 monthstring = monthstring.padStart(2, '0');
 
 	//update image
-	var imageMax = "MinMax/NSIDC_Max_" + monthstring + daystring + "_" + fileending + ".png";
-	var imageMin = "MinMax/NSIDC_Min_" + monthstring + daystring + "_" + fileending + ".png";
+	var imageMax = "Analysis/MinMax/NSIDC_Max_" + monthstring + daystring + "_" + fileending + ".png";
+	var imageMin = "Analysis/MinMax/NSIDC_Min_" + monthstring + daystring + "_" + fileending + ".png";
 	showimage(imageMax,imageMin);
 } 
 
@@ -257,8 +257,8 @@ Hemisphere.onchange = function() {
 	  fileending = "south"
   }
   //update image
-	var imageMax = "MinMax/NSIDC_Max_" + monthstring + daystring + "_" + fileending + ".png";
-	var imageMin = "MinMax/NSIDC_Min_" + monthstring + daystring + "_" + fileending + ".png";
+	var imageMax = "Analysis/MinMax/NSIDC_Max_" + monthstring + daystring + "_" + fileending + ".png";
+	var imageMin = "Analysis/MinMax/NSIDC_Min_" + monthstring + daystring + "_" + fileending + ".png";
 	showimage(imageMax,imageMin);
 }
 

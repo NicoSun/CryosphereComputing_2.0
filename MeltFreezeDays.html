@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Antarctic Melt & Freeze Dates</title>
+<title>Arctic Melt & Freeze Dates</title>
 <head>
 
-<link REL="SHORTCUT ICON" href="../static/favicon.ico" type="image/x-icon"> 
-<link rel="icon" href="../static/favicon.ico" type="image/x-icon">
-
+<link REL="SHORTCUT ICON" href="static/favicon.ico" type="image/x-icon"> 
+<link rel="icon" href="static/favicon.ico" type="image/x-icon">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../static/w3_content/w3.css">
-<link rel="stylesheet" href="../static/w3_content/css.css?family=Lato">
+<link rel="stylesheet" href="static/w3_content/w3.css">
+<link rel="stylesheet" href="static/w3_content/css.css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -135,6 +134,8 @@ img {vertical-align: middle;}
         <a href="IceFreeDays.html" class="w3-bar-item w3-button">Ice Free Days</a>
         <a href="PastSIC.html" class="w3-bar-item w3-button">Past Ice Maps</a>
         <a href="MinMax.html" class="w3-bar-item w3-button">MinMax SIC</a>
+        <a href="MeltFreezeDays.html" class="w3-bar-item w3-button">Arctic Melt & FreezeDays</a>
+        <a href="MeltFreezeDays_south.html" class="w3-bar-item w3-button">Antarctic MeltFreezeDays</a>
     </div>
     </div>
      <a href="doc.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Documentation</a>
@@ -177,7 +178,7 @@ img {vertical-align: middle;}
 
     <!-- Arctic -->
   <div class="w3-container w3-content w3-center w3-padding-5" style="max-width:1920px" id="SIC">
-    <h2 class="w3-wide">Antarctic Melt & Freeze Dates</h2>
+    <h2 class="w3-wide">Arctic Melt & Freeze Dates</h2>
 	<p class="w3-opacity"><i></p>
 	<p> These maps show the variability of melting and freezing of sea ice over the last four decades.<br>
 	 On the earliest freeze map is significant noise from coastal measurement error, to a minor degree also present on the latest melt map. 
@@ -192,13 +193,13 @@ img {vertical-align: middle;}
 
 	<div class="w3-left" style="max-width:1800px">
 	<div class="w3-third">
-	<img id="Arctic_Min" src="Antarctic_melt_freeze/2010s_001_Melt_Date.png">
+	<img id="Arctic_Min" src="Analysis/Arctic_melt_freeze/2010s_001_Melt_Date.png">
 	</div>
 	<div class="w3-third">
-	<img id="Arctic_Mean" src="Antarctic_melt_freeze/2010s_002_Melt_Date.png">
+	<img id="Arctic_Mean" src="Analysis/Arctic_melt_freeze/2010s_002_Melt_Date.png">
 	</div>
 	<div class="w3-third">
-	<img id="Arctic_Max" src="Antarctic_melt_freeze/2010s_003_Melt_Date.png">
+	<img id="Arctic_Max" src="Analysis/Arctic_melt_freeze/2010s_003_Melt_Date.png">
 	</div>
 	</div>
 
@@ -245,9 +246,9 @@ output2.innerHTML = this.value;
 decade = this.value;
 
 	//update image
-	var imageMax = "Antarctic_melt_freeze/" + decade + "s_003_" + fileending + "_Date.png";
-	var imageMean = "Antarctic_melt_freeze/" + decade + "s_002_" + fileending + "_Date.png";
-	var imageMin = "Antarctic_melt_freeze/" + decade + "s_001_" + fileending + "_Date.png";
+	var imageMax = "Analysis/Arctic_melt_freeze/" + decade + "s_003_" + fileending + "_Date.png";
+	var imageMean = "Analysis/Arctic_melt_freeze/" + decade + "s_002_" + fileending + "_Date.png";
+	var imageMin = "Analysis/Arctic_melt_freeze/" + decade + "s_001_" + fileending + "_Date.png";
 	showimage(imageMax,imageMean,imageMin);
 } 
 
@@ -260,9 +261,9 @@ Hemisphere.onchange = function() {
 	  fileending = "Freeze"
   }
   //update image
-	var imageMax = "Antarctic_melt_freeze/" + decade + "s_003_" + fileending + "_Date.png";
-	var imageMean = "Antarctic_melt_freeze/" + decade + "s_002_" + fileending + "_Date.png";
-	var imageMin = "Antarctic_melt_freeze/" + decade + "s_001_" + fileending + "_Date.png";
+	var imageMax = "Analysis/Arctic_melt_freeze/" + decade + "s_003_" + fileending + "_Date.png";
+	var imageMean = "Analysis/Arctic_melt_freeze/" + decade + "s_002_" + fileending + "_Date.png";
+	var imageMin = "Analysis/Arctic_melt_freeze/" + decade + "s_001_" + fileending + "_Date.png";
 	showimage(imageMax,imageMean,imageMin);
 }
 

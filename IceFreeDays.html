@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Historic Sea Ice Concentration</title>
+<title>Ice Free Days</title>
 <head>
 
-<link REL="SHORTCUT ICON" href="../static/favicon.ico" type="image/x-icon"> 
-<link rel="icon" href="../static/favicon.ico" type="image/x-icon">
-
+<link REL="SHORTCUT ICON" href="static/favicon.ico" type="image/x-icon"> 
+<link rel="icon" href="static/favicon.ico" type="image/x-icon">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../static/w3_content/w3.css">
-<link rel="stylesheet" href="../static/w3_content/css.css?family=Lato">
+<link rel="stylesheet" href="static/w3_content/w3.css">
+<link rel="stylesheet" href="static/w3_content/css.css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -24,6 +23,8 @@ body {font-family: "Lato";
   background-color: #00001a;
   color: #e6e6e6;
 }
+
+.mySlides {display: none}
 
 hr { 
   display: block;
@@ -62,8 +63,18 @@ hr {
   cursor: pointer;
 }
 
+
 * {box-sizing: border-box}
 img {vertical-align: middle;}
+
+
+img.ex {
+  padding: 35px;
+}
+
+p.ex {
+  padding: 40px;
+}
 
 /* Create three equal columns that floats next to each other */
 .column {
@@ -83,10 +94,9 @@ img {vertical-align: middle;}
   text-align: left;
 }
 
+
 </style>
-
 </head>
-
 <body>
 <!-- Navbar -->
 <!-- div class="w3-top"-->
@@ -134,11 +144,13 @@ img {vertical-align: middle;}
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <a href="IceFreeDays.html" class="w3-bar-item w3-button">Ice Free Days</a>
         <a href="PastSIC.html" class="w3-bar-item w3-button">Past Ice Maps</a>
+        <a href="MinMax.html" class="w3-bar-item w3-button">MinMax SIC</a>
+        <a href="MeltFreezeDays.html" class="w3-bar-item w3-button">Arctic Melt & FreezeDays</a>
+        <a href="MeltFreezeDays_south.html" class="w3-bar-item w3-button">Antarctic MeltFreezeDays</a>
     </div>
     </div>
      <a href="doc.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Documentation</a>
-        <button class="w3-button w3-right" onclick="darkmode()"><i class="fa fa-moon-o"></i></button>
-    <a href="https://github.com/NicoSun/ScienceData" class="w3-bar-item w3-button w3-hide-small w3-right">Data<i class="fa fa-caret-down"></i></a>
+    <button class="w3-button w3-right" onclick="darkmode()"><i class="fa fa-moon-o"></i></button>
   </div>
 </div>
 
@@ -174,41 +186,81 @@ img {vertical-align: middle;}
 <a href="doc.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Documentation</a>
 </div>
 
+    <!-- Snow Covered Days -->
+  <div class="w3-container w3-content w3-center w3-padding-5" style="max-width:1600px" id="SIT">
+    <h1 class="w3-wide">Arctic and Antarctic Ice Free Days</h1>
+    <p class="w3-opacity"><i>Total number of days a gridcell is icefree.</i></p>
+    <div class="w3-row w3-padding-12">
+    </div>
 
-    <!-- Arctic -->
-  <div class="w3-container w3-content w3-center w3-padding-5" style="max-width:1900px" id="SIC">
-    <h2 class="w3-wide">NSIDC Sea Ice Concentration</h2>
-	<p class="w3-opacity"><i>beginning in January 1979</i></p>
-	<div class="w3-row">
-		<img id="past_Arctic" src="Past_SIC/NSIDC_20120915_north.png">
-		<div class="w3-row">
-		
-	<select id="North_South">
-	  <option value="Arctic">Arctic</option>
-	  <option value="Antarctic">Antarctic</option>
-	</select>
+    
+    <!-- Icefree Arctic normal -->
+<div class="w3-half">
+<img id="normal" src="Analysis/IceFreeDays/Arctic_IceFreeDays_2000.png" style="width:100%">
+</div>
+    <!-- Icefree Arctic anomaly -->
+<div class="w3-half">
+<img id="anomaly" src="Analysis/IceFreeDays/Arctic_IceFreeDays__anom_2000.png" style="width:100%">
+</div>
 
+    
 <div class="slidecontainer">
     <span>Year:</span>
-    <span id="Yearselect" style="font-weight:bold;color:red">2012</span>
-  <input type="range" min="1979" max="2020" value="2012" class="slider" id="myRange" style="width:50%">
+    <span id="Arctic_Yearselect" style="font-weight:bold;color:red">2000</span>
+  <input type="range" min="1979" max="2019" value="2000" class="slider" id="myRange_Arctic" style="width:66%">
 </div>
 
-<div class="slidecontainer">
-    <span>Month:</span>
-    <span id="Monthselect" style="font-weight:bold;color:blue">9</span>
-  <input type="range" min="1" max="12.5" step="0.5" value="9" class="slider" id="myRange2" style="width:50%">
+   </div>
+<div class="w3-half">
+  <img src="Analysis/IceFreeDays/Arctic_IceFreeDays_Mean.png" class="w3-round" style="width:100%">
+</div>
+
+
+<div class="w3-half">
+  <p class="ex">Select individual years with the slider to view the difference with the long term mean.
+   Ice Free is defined as having an ice concentration below 15%.  The baseline for anomaly calculation is 1979-2018</p>
+   <img src="Analysis/IceFreeDays/Antarctic_IceFreeDays_Mean.png" class="w3-round" style="width:100%">
+    </div>
+</div>
+
+<div class="w3-row">
+
+</div>
+
+    <!-- Icefree Antarctic normal -->
+<div class="w3-half">
+<img id="normal_south" src="Analysis/IceFreeDays/Antarctic_IceFreeDays_2000.png" style="width:100%">
+</div>
+    <!-- Icefree Antarctic anomaly -->
+<div class="w3-half">
+<img id="anomaly_south" src="Analysis/IceFreeDays/Antarctic_IceFreeDays__anom_2000.png" style="width:100%">
+</div>
+
 </div>
 </div>
 
-  <hr>
-  
+
+<center>
+<div class="slidecontainer" >
+    <span>Year:</span>
+    <span id="Yearselect_south" style="font-weight:bold;color:red">2000</span>
+  <input type="range" min="1979" max="2020" value="2000" class="slider" id="myRange_south" style="width:66%">
+</div>
+</center>
+
 <div class="w3-center">
+<hr>
 <h2 class="w3-wide">Data used</h2>
 <p>Cavalieri, D. J., C. L. Parkinson, P. Gloersen, and H. J. Zwally. 1996, updated yearly. Sea Ice Concentrations from Nimbus-7 SMMR and DMSP SSM/I-SSMIS Passive Microwave Data, Version 1.1 Boulder, Colorado USA. NASA National Snow and Ice Data Center Distributed Active Archive Center. doi: https://doi.org/10.5067/8GQ8LZQVL0VL.</p>
 </div>
+   
 <!-- End Page Content -->
 </div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-8 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
 
 <script>
 darkmode()
@@ -219,70 +271,49 @@ function darkmode() {
 
 //-------------------------------------------
 
-var fileending = "north"
-var daystring = "01"
-var monthstring = "09"
-
 // Dispalys Slider value
-var slider = document.getElementById("myRange");
-var output = document.getElementById("Yearselect");
+var slider_A = document.getElementById("myRange_Arctic");
+var output_A = document.getElementById("Arctic_Yearselect");
+output_A.innerHTML = slider_A.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider_A.oninput = function() {
+  output_A.innerHTML = this.value;
+  
+  //update image
+	var imageid = "Analysis/IceFreeDays/Arctic_IceFreeDays_" + slider_A.value + ".png";
+	var imageid_anom = "Analysis/IceFreeDays/Arctic_IceFreeDays__anom_" + slider_A.value + ".png";
+	showimage(imageid,imageid_anom);
+} 
+
+function showimage (imageid,imageid_anom){
+document.getElementById("normal").src = imageid;
+document.getElementById("anomaly").src = imageid_anom;
+}
+
+// ------------------------------------------
+
+var slider = document.getElementById("myRange_south");
+var output = document.getElementById("Yearselect_south");
 output.innerHTML = slider.value; // Display the default slider value
 
-var slider2 = document.getElementById("myRange2");
-var output2 = document.getElementById("Monthselect");
-output2.innerHTML = slider2.value; // Display the default slider value
-
-// Update for year slider
+// Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-output.innerHTML = this.value;
-
-	//update image
-	var imageid = "Past_SIC/NSIDC_" + slider.value + monthstring + daystring + "_" + fileending + ".png";
-	showimage(imageid);
-} 
-
-// Update for month slider
-slider2.oninput = function() {
-output2.innerHTML = this.value;
-daystring = checkInteger(parseFloat(this.value));
-monthstring = String(parseInt(this.value));
-monthstring = monthstring.padStart(2, '0');
-
-	//update image
-	var imageid = "Past_SIC/NSIDC_" + slider.value + monthstring + daystring + "_" + fileending + ".png";
-	showimage(imageid);
-} 
-
-var Hemisphere = document.getElementById("North_South");
-Hemisphere.onchange = function() {
-  if (this.value=="Arctic"){
-	fileending = "north"
-  }
-  else{
-	  fileending = "south"
-  }
+  output.innerHTML = this.value;
+  
   //update image
-	var imageid = "Past_SIC/NSIDC_" + slider.value + monthstring + daystring + "_" + fileending + ".png";
-	showimage(imageid);
-}
+	var imageid = "Analysis/IceFreeDays/Antarctic_IceFreeDays_" + slider.value + ".png";
+	var imageid_anom = "Analysis/IceFreeDays/Antarctic_IceFreeDays__anom_" + slider.value + ".png";
+	showimage_south(imageid,imageid_anom);
+} 
 
-function showimage (imageid){
-
-
-document.getElementById("past_Arctic").src = imageid;
-//document.write(imageid);
-}
-
-function checkInteger (num){
-if(Number.isInteger(num)){
-	return "01";
-	} 
-else{return "15";}
+function showimage_south (imageid,imageid_anom){
+document.getElementById("normal_south").src = imageid;
+document.getElementById("anomaly_south").src = imageid_anom;
 }
 
 
-
-//------------------------------------------
+// ------------------------------------------
 
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
